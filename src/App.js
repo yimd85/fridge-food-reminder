@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-
-
-
 class List extends Component {
   constructor(props){
           super(props);
@@ -30,12 +27,8 @@ class List extends Component {
           name:"",
           expires:""
         }
-
   }
-
-
 }
-
 
 handleToss(event) {
   let targetLock = event.target.id;
@@ -71,34 +64,39 @@ handleInputChange(event) {
         let dd = rightNow.getDate();
         let yyyy = rightNow.getFullYear();
         let dateNow = yyyy + '-' + mm + '-' + dd;
+        let checkEmpty = this.state.food.length;
+        let feedMe = (
+          <p>put more things into fridge</p>
+        );
+        let thisGuy = (
+          <ul>
+            {this.state.food.map((eatThisShit) => (
+              <li
+                key={eatThisShit.name}
+                className={dateNow > eatThisShit.expires ? "expired":"good"}
+                id = {(eatThisShit.expires)}
+                >
+                {eatThisShit.name}
+                <br/>
+                <span>
+                  {eatThisShit.expires}
+                </span>
+                <br/>
+                <button
+                  id = {eatThisShit.name}
+                  onClick={(event) => this.handleToss(event)}
+                  >
+                  toss
+                </button>
+              </li>
+            ))}
+          </ul>
+        );
+
 
   			return (
           <div>
-            <ul>
-              {this.state.food.map((eatThisShit) => (
-
-                <li
-                  key={eatThisShit.name}
-                  className={dateNow > eatThisShit.expires ? "expired":"good"}
-                  id = {(eatThisShit.expires)}
-                  >
-                  {eatThisShit.name}
-                  <br/>
-                  <span>
-                    {eatThisShit.expires}
-                  </span>
-                  <br/>
-                  <button
-                    id = {eatThisShit.name}
-                    onClick={(event) => this.handleToss(event)}
-                    >
-                    toss
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-
+            {checkEmpty == 0  ? feedMe : thisGuy}
             <div>
                 <form>
                         <textarea
@@ -107,6 +105,7 @@ handleInputChange(event) {
                         rows="4"
                         cols="50"
                         id='whatIsThisInFridge'
+                        required
                         value={this.state.name}
                         onChange={(event) => this.handleInputChange(event)}
                         />
@@ -115,6 +114,7 @@ handleInputChange(event) {
                         name="expires"
                         type="date"
                         id='whenDoesItRot'
+                        required
                         value={this.state.expires}
                         onChange={(event) => this.handleInputChange(event)}
                         />
@@ -127,10 +127,7 @@ handleInputChange(event) {
                     />
                 </form>
             </div>
-
           </div>
-
-
     		)
       }
   }

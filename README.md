@@ -10,4 +10,5 @@ Grading Criteria
 
 
 npm install <br>
+cd src <br/>
 npm start <br>
