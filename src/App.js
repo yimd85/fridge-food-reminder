@@ -99,32 +99,32 @@ handleInputChange(event) {
             {checkEmpty == 0  ? feedMe : thisGuy}
             <div>
                 <form>
-                        <textarea
-                        name="name"
-                        type="text"
-                        rows="4"
-                        cols="50"
-                        id='whatIsThisInFridge'
-                        required
-                        value={this.state.name}
-                        onChange={(event) => this.handleInputChange(event)}
-                        />
-            <br/>
-                        <input
-                        name="expires"
-                        type="date"
-                        id='whenDoesItRot'
-                        required
-                        value={this.state.expires}
-                        onChange={(event) => this.handleInputChange(event)}
-                        />
-              <br/>
-                    <input
-                    value="AddToFridge"
-                    type="submit"
-                    id='whenDoesItRot'
-                    onClick={(event) => this.handleClick(event)}
-                    />
+                          <textarea
+                          name="name"
+                          type="text"
+                          rows="4"
+                          cols="50"
+                          id='whatIsThisInFridge'
+                          required
+                          value={this.state.name}
+                          onChange={(event) => this.handleInputChange(event)}
+                          />
+                      <br/>
+                          <input
+                          name="expires"
+                          type="date"
+                          id='whenDoesItRot'
+                          required
+                          value={this.state.expires}
+                          onChange={(event) => this.handleInputChange(event)}
+                          />
+                      <br/>
+                          <input
+                          value="AddToFridge"
+                          type="submit"
+                          id='whenDoesItRot'
+                          onClick={(event) => this.handleClick(event)}
+                          />
                 </form>
             </div>
           </div>
