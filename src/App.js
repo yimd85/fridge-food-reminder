@@ -61,10 +61,15 @@ handleInputChange(event) {
   render(){
         let rightNow = new Date();
         let mm = rightNow.getMonth() + 1;
+        let x;
         let dd = rightNow.getDate();
+        {10> dd ? x=`0${dd}`:x=dd}
         let yyyy = rightNow.getFullYear();
-        let dateNow = yyyy + '-' + mm + '-' + dd;
+        let dateNow = yyyy + '-' + mm + '-' + x;
         let checkEmpty = this.state.food.length;
+        // console.log(dateNow);
+        // console.log(dd);
+        // console.log(x);
         let feedMe = (
           <p>put more things into fridge</p>
         );
@@ -73,7 +78,7 @@ handleInputChange(event) {
             {this.state.food.map((eatThisShit) => (
               <li
                 key={eatThisShit.name}
-                className={dateNow > eatThisShit.expires ? "expired":"good"}
+                className={dateNow> eatThisShit.expires ? "expired":"good"}
                 id = {(eatThisShit.expires)}
                 >
                 {eatThisShit.name}
@@ -96,7 +101,7 @@ handleInputChange(event) {
 
   			return (
           <div>
-            {checkEmpty == 0  ? feedMe : thisGuy}
+            {checkEmpty === 0  ? feedMe : thisGuy}
             <div>
                 <form>
                           <textarea
